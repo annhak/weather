@@ -56,12 +56,12 @@ tampere_lon = 23.885709
 folder = 'rain_images'
 
 places = ['harmala', 'hattula', 'juupajoki', 'tulkkila', 'lahti', 'jamsa']
-harmala = pd.read_csv('C:/Users/annahak/Downloads/harmala.csv')
+harmala = pd.read_csv('raw_data/harmala.csv')
 all_data = harmala[['Vuosi', 'Kk', 'Pv', 'Klo']].astype(str)
 all_data['datetime'] = all_data['Pv'] + '.' + all_data['Kk'] + '.' + all_data['Vuosi'] + ' ' + all_data['Klo']
 
 for place in places:
-    df = pd.read_csv(f'C:/Users/annahak/Downloads/{place}.csv')
+    df = pd.read_csv(f'raw_data/{place}.csv')
     all_data[f'rain_{place}'] = df['Sademäärä (mm)']
 
 mag_cols = [col for col in all_data.columns if 'rain' in col]

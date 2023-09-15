@@ -67,12 +67,12 @@ folder = 'images'
 places = ['siilinkari', 'pirkkala', 'katinen', 'halli']
 
 # Initialize
-siilinkari = pd.read_csv('C:/Users/annahak/Downloads/siilinkari.csv')
+siilinkari = pd.read_csv('raw_data/siilinkari.csv')
 all_data = siilinkari[['Vuosi', 'Kk', 'Pv', 'Klo']].astype(str)
 all_data['datetime'] = all_data['Pv'] + '.' + all_data['Kk'] + '.' + all_data['Vuosi'] + ' ' + all_data['Klo']
 
 for place in places:
-    df = pd.read_csv(f'C:/Users/annahak/Downloads/{place}.csv')
+    df = pd.read_csv(f'raw_data/{place}.csv')
     all_data[f'direction_{place}'] = df['Tuulen suunta (deg)']
     all_data[f'magnitude_{place}'] = df['Tuulen nopeus (m/s)']
 
